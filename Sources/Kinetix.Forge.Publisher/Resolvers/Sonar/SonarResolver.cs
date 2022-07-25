@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Net;
 using Kinetix.Forge.Publisher.Dto;
 
 namespace Kinetix.Forge.Publisher.Resolvers.Sonar
@@ -10,7 +11,8 @@ namespace Kinetix.Forge.Publisher.Resolvers.Sonar
     {
         public SonarResolver()
         {
-
+            /* Gestion du TLS avec .NET obsolète. */
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | (SecurityProtocolType)768 /* Tls11 */ | (SecurityProtocolType)3072 /* Tls12 */ | (SecurityProtocolType)12288 /* Tls13 */;
         }
 
         /// <inheritdoc/>
